@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Lofi Night API",
+    "version": "1.0.0",
+    "description": "API documentation cho ứng dụng Lofi Night - quản lý playlist và bài hát",
+    "contact": {
+      "name": "Lofi Night Team",
+      "email": "support@lofinight.com",
+      "url": "https://lofinight.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
+    },
+    {
+      "url": "https://api.lofinight.com",
+      "description": "Production server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token để xác thực API"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "string",
+            "example": "Có lỗi xảy ra"
+          },
+          "error": {
+            "type": "string",
+            "example": "ValidationError"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": 400
+          }
+        }
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Thành công"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Xác thực và đăng nhập"
+    },
+    {
+      "name": "Users",
+      "description": "Quản lý người dùng"
+    },
+    {
+      "name": "Songs",
+      "description": "Quản lý bài hát"
+    },
+    {
+      "name": "Playlists",
+      "description": "Quản lý playlist"
+    }
+  ],
+  "paths": {}
+}
